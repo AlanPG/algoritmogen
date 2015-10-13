@@ -1,17 +1,18 @@
 /*
- * Individuo.cpp
+ * Escom.cpp
  *
  *  Created on: 13/10/2015
  *      Author: hcarey
  */
 
-#include "Individuo.h"
+#include "Escom.h"
 
-Individuo::Individuo() {
+Escom::Escom() {
 	// TODO Auto-generated constructor stub
+
 }
 
-Individuo::~Individuo() {
+Escom::~Escom() {
 	// TODO Auto-generated destructor stub
 }
 
