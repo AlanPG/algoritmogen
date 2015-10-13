@@ -9,7 +9,6 @@
 
 Individuo::Individuo() {
 	// TODO Auto-generated constructor stub
-
 }
 
 Individuo::~Individuo() {
