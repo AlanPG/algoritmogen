@@ -3,12 +3,12 @@
 //Author: Héctor Rodríguez González 
 
 //#include "Individuo.h"
-//#define RAND_MAX
+
 
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
-//#include <ctime>
+
 #define LONG_COD 20
 #define LIMITE 5.12
 #define INTERVALO 10.24/pow(2,LONG_COD/2)
@@ -25,24 +25,18 @@ public:
 public:
     //Individuo(int*,double);
     Individuo();
-      //  void setnumGen(int);
-//        void setAptitud(double);
 
-        //int tam=LONG_COD;
-  //      genotipo[LONG_COD];
-       // aptitud=ap;
+    int generarBinario(void);
 
-        int generarBinario(void);
+    void decoder(double*,double*,int[]);
+    double fitness (double,double);
 
-        void decoder(double*,double*,int[]);
-        double fitness (double,double);
+    void crearIndividuo(int[]);
 
-        void crearIndividuo(int[]);
 
-  //      int* getgenotipo();
-        double getaptitud();
+    double getaptitud();
+    int* getgenotipo();
 
-//        void setgenotipo(int[]);
         void setaptitud(double apt);
 
 };
@@ -73,15 +67,12 @@ int main(){
 //}
 
     Individuo::Individuo(){
+
         genotipo=new int[LONG_COD];
 
     }
 
-   // Individuo::Individuo(int*cromosoma,double apt){
-     //   genotipo=cromosoma
-       // aptitud=apt;
 
-    //}
 
 int Individuo::generarBinario(void){
    if (1 + (int)(10*rand()/(RAND_MAX)) > 5)
@@ -93,7 +84,7 @@ int Individuo::generarBinario(void){
 }
 
 void Individuo::decoder(double*x,double*y,int genotipo[]){
-    //float LIMITE=5.12;
+
     int i;
     *x = *y = 0.0;
 
@@ -115,7 +106,7 @@ double Individuo::fitness (double p1, double p2)
 
 void Individuo::crearIndividuo(int crom[]){
 
-   // Individuo ind;
+
     int i;
 
 
@@ -133,13 +124,10 @@ double Individuo::getaptitud(){
      return aptitud;
 }
 
-/*int* Individuo::getgenotipo(){
+int* Individuo::getgenotipo(){
     return genotipo;
 }
 
-void Individuo::setgenotipo(int cromosoma[]){
-    genotipo=cromosoma;
-}*/
 
 void Individuo::setaptitud(double apt){
     aptitud=apt;
