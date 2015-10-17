@@ -66,7 +66,7 @@ int main(){
     return 0;
 }
 
-/
+
 
 //void Individuo::setAptitud(double apt){
   //  aptitud=apt;
@@ -84,7 +84,7 @@ int main(){
     //}
 
 int Individuo::generarBinario(void){
-   if (1 + (int)(10*rand()/(RAND_MAX+1)) > 5)
+   if (1 + (int)(10*rand()/(RAND_MAX)) > 5)
         return 1;
     else
         return 0;
@@ -148,7 +148,7 @@ void Individuo::setaptitud(double apt){
 
 int generarBinario(void){
 
-    if(1+(int)(10*rand()/(RAND_MAX +1))>5)
+    if(1+(int)(10*rand()/(RAND_MAX))>5)
         return 1;
     else
         return 0;
