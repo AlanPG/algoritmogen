@@ -2,48 +2,156 @@
 //Algoritmo Genetico
 //Author: Héctor Rodríguez González 
 
-#include "Individuo.h"
-#define RAND_MAX
+//#include "Individuo.h"
+//#define RAND_MAX
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+//#include <ctime>
+#define LONG_COD 20
+#define LIMITE 5.12
+#define INTERVALO 10.24/pow(2,LONG_COD/2)
+
+using namespace std;
+//#define tamgen 10
+
+class Individuo{
+public:
+    //int tamgen;
+    int genotipo[LONG_COD];
+    double aptitud;
+
+public:
+    //Individuo(int*,double);
+    Individuo();
+      //  void setnumGen(int);
+//        void setAptitud(double);
+
+        //int tam=LONG_COD;
+  //      genotipo[LONG_COD];
+       // aptitud=ap;
+
+        int generarBinario(void);
+
+        void decoder(double*,double*,int[]);
+        double fitness (double,double);
+
+        void crearIndividuo(int[]);
+
+  //      int* getgenotipo();
+        double getaptitud();
+
+//        void setgenotipo(int[]);
+        void setaptitud(double apt);
+
+};
+
+int main(){
+
+    Individuo ind;
+
+    double x,y;
 
 
-Individuo::Individuo(){
-    cromosoma=(int*)malloc(numGenes*sizeof(int));
+    ind.decoder(&x,&y,ind.genotipo);
+
+    ind.aptitud=ind.fitness(x,y);
+//    ind.setAptitud();
+
+
+
+
+
+    return 0;
 }
 
-Individuo::Individuo(int numGenes):numGenes(numGenes){
-    cromosoma=(int*)malloc(numGenes*sizeof(int));
+/
+
+//void Individuo::setAptitud(double apt){
+  //  aptitud=apt;
+//}
+
+    Individuo::Individuo(){
+        genotipo=new int[LONG_COD];
+
+    }
+
+   // Individuo::Individuo(int*cromosoma,double apt){
+     //   genotipo=cromosoma
+       // aptitud=apt;
+
+    //}
+
+int Individuo::generarBinario(void){
+   if (1 + (int)(10*rand()/(RAND_MAX+1)) > 5)
+        return 1;
+    else
+        return 0;
+
 
 }
 
-int Individuo::getnumGenes(){
-    return numGenes;
+void Individuo::decoder(double*x,double*y,int genotipo[]){
+    //float LIMITE=5.12;
+    int i;
+    *x = *y = 0.0;
+
+    // calculo del primer decimal
+    for(i=0; i<LONG_COD/2; i++)
+        *x += genotipo[i] * pow(2, (LONG_COD/2)-(i+1));
+    *x = (*x) * INTERVALO + LIMITE;
+
+    //calculo del segundo decimal
+    for(;i<LONG_COD;i++)
+        *y += genotipo[i] * pow(2, LONG_COD-(i+1));
+    *y = (*y) * INTERVALO + LIMITE;
 }
 
-float Individuo::getaptitud(){
-    return aptitud;
+double Individuo::fitness (double p1, double p2)
+{
+    return pow(p1,2) + pow(p2,2);
 }
 
-int *Individuo::getcromosoma(){ 
-    return cromosoma;
+void Individuo::crearIndividuo(int crom[]){
+
+   // Individuo ind;
+    int i;
+
+
+
+    for (i=0; i<LONG_COD; i++)
+        crom[i]=generarBinario();
+
+
+
+
 }
 
-void Individuo::setnumGenes(int numGenes){
-    numGenes=numGenes;
+
+double Individuo::getaptitud(){
+     return aptitud;
 }
 
-void Individuo::setaptitud(float aptitud){
-    aptitud=aptitud;
-
+/*int* Individuo::getgenotipo(){
+    return genotipo;
 }
 
-void Individuo::setcromosoma(int[]cromosoma){
-    cromosoma=cromosoma;
+void Individuo::setgenotipo(int cromosoma[]){
+    genotipo=cromosoma;
+}*/
+
+void Individuo::setaptitud(double apt){
+    aptitud=apt;
 }
+
 
 int generarBinario(void){
-    float limite=-5.12
-    if(1+(int)(10.0.rand()/(RAND_MAX +1.0))>5)
+
+    if(1+(int)(10*rand()/(RAND_MAX +1))>5)
         return 1;
     else
         return 0;
 }
+
+
