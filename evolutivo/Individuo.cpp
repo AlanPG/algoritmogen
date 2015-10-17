@@ -5,6 +5,7 @@
 #include "Individuo.h"
 #define RAND_MAX
 
+
 Individuo::Individuo(){
     cromosoma=(int*)malloc(numGenes*sizeof(int));
 }
