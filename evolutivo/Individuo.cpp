@@ -1,87 +1,12 @@
 //Individuo.cpp
 //Algoritmo Genetico
-//Author: Héctor Rodríguez González 
+//Author: Héctor Rodríguez González
 
-//#include "Individuo.h"
-
-
-#include <iostream>
-#include <cstdlib>
-#include <cmath>
-
-#define LONG_COD 20
-#define LIMITE 5.12
-#define INTERVALO 10.24/pow(2,LONG_COD/2)
-
-using namespace std;
-//#define tamgen 10
-
-class Individuo{
-public:
-    //int tamgen;
-    int genotipo[LONG_COD];
-    double aptitud;
-
-public:
-    //Individuo(int*,double);
-    Individuo();
-
-    int generarBinario(void);
-
-    void decoder(double*,double*,int[]);
-    double fitness (double,double);
-
-    void crearIndividuo(int[]);
+#include "Individuo.h"
 
 
-    double getaptitud();
-    int* getgenotipo();
+Individuo::Individuo(){    }
 
-        void setaptitud(double apt);
-
-};
-
-int main(){
-
-    Individuo ind;
-
-    double x,y;
-
-
-    ind.decoder(&x,&y,ind.genotipo);
-
-    ind.aptitud=ind.fitness(x,y);
-//    ind.setAptitud();
-
-
-
-
-
-    return 0;
-}
-
-
-
-//void Individuo::setAptitud(double apt){
-  //  aptitud=apt;
-//}
-
-    Individuo::Individuo(){
-
-        genotipo=new int[LONG_COD];
-
-    }
-
-
-
-int Individuo::generarBinario(void){
-   if (1 + (int)(10*rand()/(RAND_MAX)) > 5)
-        return 1;
-    else
-        return 0;
-
-
-}
 
 void Individuo::decoder(double*x,double*y,int genotipo[]){
 
@@ -104,19 +29,14 @@ double Individuo::fitness (double p1, double p2)
     return pow(p1,2) + pow(p2,2);
 }
 
-void Individuo::crearIndividuo(int crom[]){
-
+int* Individuo::crearIndividuo(int crom[]){
 
     int i;
-
-
 
     for (i=0; i<LONG_COD; i++)
         crom[i]=generarBinario();
 
-
-
-
+    return crom;
 }
 
 
@@ -132,14 +52,17 @@ int* Individuo::getgenotipo(){
 void Individuo::setaptitud(double apt){
     aptitud=apt;
 }
+void Individuo::setgenotipo(int gen[]){
+    int i;
+    for(i=0;i<LONG_COD;i++)
+        genotipo[i]=gen[i];
+
+}
 
 
-int generarBinario(void){
+int Individuo::generarBinario(void){
 
-    if(1+(int)(10*rand()/(RAND_MAX))>5)
-        return 1;
-    else
-        return 0;
+        return rand()%2;
 }
 
 
