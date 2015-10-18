@@ -7,13 +7,11 @@
 
 #include <stdio.h>
 
-
 class Poblacion{
 private:
     int numIndividuos;
     float numGeneraciones;
     Individuo[]poblacion;
-
 
 public:
     Poblacion(){
@@ -28,14 +26,7 @@ public:
         void setnumIndividuos(int);
         void setnumGeneraciones(float);
         void setpoblacion(Individuo[]);
-
     }
-
-    
-
 //    void creaPobInicial();
-
-
 };
-
 #endif 

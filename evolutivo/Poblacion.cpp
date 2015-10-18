@@ -2,8 +2,25 @@
 //Algoritmo Genetico
 //Author: Héctor Rodríguez González
 
-#include "Individuo.h" //?????
+#include "Individuo.h"
 #include "Poblacion.h"
+#include <list>
+
+class Poblacion{
+	private:
+	std::list<Individuo> Individuo;
+
+	public:
+
+	std::list<Individuo> getIndividuos(){
+		return Individuo;
+	}
+
+	Int getSize(){
+		return Individuo;
+	}
+
+};
 
 
 Poblacion::Poblacion(int numIndividuos,float numGeneraciones, Individuo[]poblacion):
@@ -16,10 +33,6 @@ int Poblacion::getnumIndividuos(){
     return numIndividuos;
 }
 
-float Poblacion::getnumGeneraciones(){
-
-    return numGeneraciones;
-}
 
 Individuo [] Poblacion::getpoblacion(){
 
