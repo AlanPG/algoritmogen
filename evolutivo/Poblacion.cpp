@@ -1,65 +1,24 @@
 //Poblacion.cpp
 //Algoritmo Genetico
-//Author: Héctor Rodríguez González
 
 #include "Individuo.h"
 #include "Poblacion.h"
 #include <list>
 
-class Poblacion{
-	private:
-	std::list<Individuo> Individuo;
+std::list<Individuo> Poblacion::getIndividuos(){
+	return Individuos;
+}
 
-	public:
-
-	std::list<Individuo> getIndividuos(){
-		return Individuo;
+void Poblacion::setIndividuos(std::list<Individuo> Individuo){
+	for(int i = 0; i < size; i++){
+		Individuos[i] = Individuo[i];
 	}
-
-	Int getSize(){
-		return Individuo;
-	}
-
-};
-
-
-Poblacion::Poblacion(int numIndividuos,float numGeneraciones, Individuo[]poblacion):
-numIndividuos(numIndividuos),numGeneraciones(numGeneraciones),poblacion(poblacion){
-
 }
 
-int Poblacion::getnumIndividuos(){
-
-    return numIndividuos;
+void Poblacion::setSize(int tam){
+	size = tam;
 }
 
-
-Individuo [] Poblacion::getpoblacion(){
-
-    return poblacion;
+int Poblacion::getSize(){
+	return Individuos.size();
 }
-
-void Poblacion::setnumIndividuos(int numIndividuos){
-    numIndividuos=numIndividuos;
-}
-
-void Poblacion::setnumGeneraciones(float numGeneraciones){
-    numGeneraciones=numGeneraciones;
-}
-
-void Poblacion::setpoblacion(Individuo[] poblacion){
-    poblacion=poblacion;
-}
-
-/*void Poblacion::creaPobInicial(){
-
-}
-
-public void creaPobInicial()
-    {
-        Iterator <Integer> it;
-
-        for(int i = 0; i < numIndividuos; i++)
-        {
-    
-*/

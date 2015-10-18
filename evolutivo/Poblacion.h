@@ -8,25 +8,15 @@
 #include <stdio.h>
 
 class Poblacion{
-private:
-    int numIndividuos;
-    float numGeneraciones;
-    Individuo[]poblacion;
+	private:
+	std::list<Individuo> Individuos;
+	int size;
 
-public:
-    Poblacion(){
+	public:
 
-    }
-
-    Poblacion(int, float,Individuo[]){
-        int getnumIndividuos();
-        float getNumGeneraciones();
-        Individuo[] getpoblacion();
-
-        void setnumIndividuos(int);
-        void setnumGeneraciones(float);
-        void setpoblacion(Individuo[]);
-    }
-//    void creaPobInicial();
+	std::list<Individuo> getIndividuos();
+	void setIndividuos(std::list<Individuo> Individuo);
+	void setSize(int tam);
+	int getSize();
 };
-#endif 
+#endif
