@@ -8,10 +8,10 @@
 
 Operadores::Operadores(){}
 
-std::list<Individuo>Operadores::seleccion(std::list<Individuo>pob){
+vector<Individuo>Operadores::seleccion(vector<Individuo>pob){
 		Individuo a,b;
 		int i;
-		std::list<Individuo>select=(Individuo*)malloc(sizeof(Individuo)*POBLACION);
+		vector<Individuo>select=(Individuo*)malloc(sizeof(Individuo)*POBLACION);
 
 		for (i=0; i<POBLACION-1; i++)
 		    {
@@ -27,7 +27,7 @@ std::list<Individuo>Operadores::seleccion(std::list<Individuo>pob){
 		    return select;
 	}
 
-void Operadores::mutacion(std::list<Individuo>hijos){
+void Operadores::mutacion(vector<Individuo>hijos){
 
 	int i, j;
 	    for(i=0; i<2; i++)
@@ -43,7 +43,9 @@ void Operadores::mutacion(std::list<Individuo>hijos){
 
 }
 
-void Operadores::cruza(std::list<Individuo>seleccion){
+void Operadores::cruza(vector<Individuo>seleccion){
+	Individuo h;
+
 	int i, j, punto, aux;
 
 	    double x, y;
@@ -61,18 +63,17 @@ void Operadores::cruza(std::list<Individuo>seleccion){
 	                seleccion[i+1].genotipo[j]=aux;
 	            }
 
-	            mutacion(&seleccion[i]);
+	            mutacion(seleccion);
 
-	            decoder(&x, &y, seleccion[i].genotipo);
-	            seleccion[i].aptitud = fitness(x,y);
-
-	            decoder(&x, &y, seleccion[i+1].genotipo);
-	            seleccion[i+1].aptitud = fitness(x,y);
+	            h.decoder(&x, &y, seleccion[i].genotipo);
+	            seleccion[i].aptitud = h.fitness(x,y);
+	            h.decoder(&x, &y, seleccion[i+1].genotipo);
+	            seleccion[i+1].aptitud = h.fitness(x,y);
 	        }
 	    }
 }
 
-Individuo Operadores::elite(std::list<Individuo>poblacion){
+Individuo Operadores::elite(vector<Individuo>poblacion){
     int i;
     Individuo best = poblacion[0];
 

@@ -14,7 +14,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
-#include <list>
+#include <vector>
 using namespace std;
 
 
@@ -22,13 +22,13 @@ class Operadores{
 public:
 	Operadores();
 
-	std::list<Individuo>seleccion(std::list<Individuo>);
+	vector<Individuo>seleccion(vector<Individuo>);
 
-	void mutacion(std::list<Individuo>);
+	void mutacion(vector<Individuo>);
 
-	void cruza(std::list<Individuo>);
+	void cruza(vector<Individuo>);
 
-	Individuo elite(std::list<Individuo>);
+	Individuo elite(vector<Individuo>);
 
 };
 
