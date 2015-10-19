@@ -3,7 +3,6 @@
 
 #include "Individuo.h"
 #include "Poblacion.h"
-#include <vector>
 
 #define LONG_COD 20
 
@@ -15,6 +14,7 @@ void Poblacion::setIndividuos(std::vector<Individuo> Individuo){
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < LONG_COD; j++){
 			Individuos[i].genotipo[j] = Individuo[i].genotipo[j];
+			Individuos[i].aptitud = Individuo[i].aptitud;
 		}
 	}
 }

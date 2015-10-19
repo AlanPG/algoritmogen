@@ -3,10 +3,10 @@
 
 #ifndef _Algoritmo_Genetico_Poblacion
 #define _Algoritmo_Genetico_Poblacion
+#include <vector>
 
 class Poblacion{
 	private:
-	//Individuo Individuos[20];
 	std::vector<Individuo> Individuos;
 	int size;
 
