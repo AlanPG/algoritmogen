@@ -1,11 +1,8 @@
 //poblacion.h
 //Algoritmo Genetico
-//Author: Héctor Rodríguez González
 
 #ifndef _Algoritmo_Genetico_Poblacion
 #define _Algoritmo_Genetico_Poblacion
-
-#include <stdio.h>
 
 class Poblacion{
 	private:
@@ -19,4 +16,5 @@ class Poblacion{
 	void setSize(int tam);
 	int getSize();
 };
+
 #endif
