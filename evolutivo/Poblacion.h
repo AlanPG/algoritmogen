@@ -6,13 +6,14 @@
 
 class Poblacion{
 	private:
-	std::list<Individuo> Individuos;
+	//Individuo Individuos[20];
+	std::vector<Individuo> Individuos;
 	int size;
 
 	public:
 
-	std::list<Individuo> getIndividuos();
-	void setIndividuos(std::list<Individuo> Individuo);
+	std::vector<Individuo> getIndividuos();
+	void setIndividuos(std::vector<Individuo> Individuo);
 	void setSize(int tam);
 	int getSize();
 

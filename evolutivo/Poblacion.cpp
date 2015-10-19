@@ -3,15 +3,19 @@
 
 #include "Individuo.h"
 #include "Poblacion.h"
-#include <list>
+#include <vector>
 
-std::list<Individuo> Poblacion::getIndividuos(){
+#define LONG_COD 20
+
+std::vector<Individuo> Poblacion::getIndividuos(){
 	return Individuos;
 }
 
-void Poblacion::setIndividuos(std::list<Individuo> Individuo){
+void Poblacion::setIndividuos(std::vector<Individuo> Individuo){
 	for(int i = 0; i < size; i++){
-		Individuos[i].genotipo = Individuo[i].genotipo;
+		for(int j = 0; j < LONG_COD; j++){
+			Individuos[i].genotipo[j] = Individuo[i].genotipo[j];
+		}
 	}
 }
 
