@@ -22,3 +22,5 @@ void Poblacion::setSize(int tam){
 int Poblacion::getSize(){
 	return Individuos.size();
 }
+
+

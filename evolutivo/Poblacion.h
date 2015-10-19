@@ -15,6 +15,7 @@ class Poblacion{
 	void setIndividuos(std::list<Individuo> Individuo);
 	void setSize(int tam);
 	int getSize();
+
 };
 
 #endif
