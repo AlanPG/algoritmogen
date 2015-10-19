@@ -11,7 +11,7 @@ std::list<Individuo> Poblacion::getIndividuos(){
 
 void Poblacion::setIndividuos(std::list<Individuo> Individuo){
 	for(int i = 0; i < size; i++){
-		Individuos[i] = Individuo[i];
+		Individuos[i].genotipo = Individuo[i].genotipo;
 	}
 }
 
