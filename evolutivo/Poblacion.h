@@ -1,26 +1,40 @@
-//poblacion.h
+//Poblacion.h
 //Algoritmo Genetico
+//Authors: Héctor Rodríguez González/Alan Gustavo Plata Godinez
+//
 
 #ifndef _Algoritmo_Genetico_Poblacion
 #define _Algoritmo_Genetico_Poblacion
-#include "Individuo.h"
+
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
 #include <vector>
+#include "Individuo.h"
+#include <stdio.h>
+
 #define LONG_COD 20
+#define POBLACION 10
+
+using namespace std;
 
 class Poblacion{
-	private:
-	std::vector<Individuo> Individuos;
-	int size = 10;
+public:
 
-	public:
-	Poblacion();
-	void crearIndividuos();
-	std::vector<Individuo> getIndividuos();
-	void setIndividuos(std::vector<Individuo> Individuo);
-	void setSize(int tam);
-	void imprimir();
-	int getSize();
+    vector<Individuo>pob;
+
+
+public:
+
+    Poblacion();
+
+    void setpob(std::vector<Individuo>);
+    std::vector<Individuo> getpob();
+
+    std::vector<Individuo> crearPoblacion();
+    void imprimePoblacion(std::vector<Individuo>);
 
 };
 
 #endif
+
