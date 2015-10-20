@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <vector>
+#include "Individuo.h"
 using namespace std;
 
 

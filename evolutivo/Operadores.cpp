@@ -11,36 +11,39 @@ Operadores::Operadores(){}
 vector<Individuo>Operadores::seleccion(vector<Individuo>pob){
 		Individuo a,b;
 		int i;
-		vector<Individuo>select=(Individuo*)malloc(sizeof(Individuo)*POBLACION);
+		Poblacion select;
+		//vector<Individuo>select=(Individuo*)malloc(sizeof(Individuo)*POBLACION);
 
-		for (i=0; i<POBLACION-1; i++)
+		for (i=0; i<(POBLACION-1)/2; i++)
 		    {
 		        a = pob[(int) (((double) POBLACION)*rand()/(RAND_MAX+1.0))];
 		        b = pob[(int) (((double) POBLACION)*rand()/(RAND_MAX+1.0))];
 
-		        if (a.aptitud < b.aptitud)
-		            select[i] = a;
-		        else
-		            select[i] = b;
+		        if (a.getaptitud() < b.getaptitud()){
+		            select.pob.push_back(a);
+		        }
+		        else{
+		            select.pob.push_back(b);
+		        }
 		    }
 
-		    return select;
+		    return select.pob;
 	}
 
 void Operadores::mutacion(vector<Individuo>hijos){
 
 	int i, j;
-	    for(i=0; i<2; i++)
+	    for(i=0; i<2; i++){
 	        for(j=0; j<LONG_COD; j++)
 	            if ((double) rand()/(RAND_MAX+1.0) < P_MUTACION)
 	            {
 	                if(hijos[j].genotipo[j])
 	                    hijos[i].genotipo[j] = 0;
 	                else hijos[i].genotipo[j] = 1;
+
+	                printf("MUTANDO\n");
 	            }
-
-
-
+	    }
 }
 
 void Operadores::cruza(vector<Individuo>seleccion){

@@ -5,14 +5,15 @@
 
 #include "Poblacion.h"
 #include "Individuo.h"
+#include "Operadores.h"
 
 
-int main(){
+/*int main(){
     Poblacion b;
     b.imprimePoblacion(b.crearPoblacion());
 
     return 0;
-}
+}*/
 
 
 Poblacion::Poblacion(){
@@ -25,8 +26,13 @@ std::vector<Individuo> Poblacion::getpob(){
 
 void Poblacion::setpob(vector<Individuo>poblacion){
     int i;
-    for(i=0;i<POBLACION;i++)
-        pob[i]=poblacion[i];
+    for(i=0;i<POBLACION;i++){
+        //pob[i]=poblacion[i];
+    	Individuo ind;
+    	ind.setgenotipo(poblacion[i].getgenotipo());
+    	ind.setaptitud(poblacion[i].getaptitud());
+    	pob.push_back(ind);
+    }
 
 }
 
@@ -50,11 +56,12 @@ std::vector<Individuo> Poblacion::crearPoblacion(){
 
 void Poblacion::imprimePoblacion(std::vector<Individuo>ind){
     for(int i=0;i<ind.size();i++){
-        printf("\nIndividuo %d \n",i+1);
+        printf("Individuo %d \n",i+1);
         printf("Aptitud: %lf \n",ind[i].getaptitud());
         printf("Cromosoma: ");
         for(int j=0;j<LONG_COD;j++)
-        printf("%d",ind[i].getgenotipo()[j]);
+        	printf("%d",ind[i].getgenotipo()[j]);
+        printf("\n");
 
     }
 
