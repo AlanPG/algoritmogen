@@ -7,19 +7,22 @@
 #include "Individuo.h"
 #include "Operadores.h"
 
+#define POBLACION 10
+
 
 int main(){
     Poblacion b,c,d;
     Operadores op;
 
-    b.setpob(b.crearPoblacion());
+    b.setpob(b.crearPoblacion(POBLACION));
     //printf("POBLACION:\n");
     //b.imprimePoblacion(b.getpob());
     printf("POBLACION SELECCIONADA:\n");
+    c.crearPoblacion(POBLACION/2);
     c.setpob(op.seleccion(b.getpob()));
     c.imprimePoblacion(c.getpob());
     printf("POBLACION MUTADA:\n");
-    op.mutacion(c.getpob())
+    op.mutacion(c.getpob());
     c.imprimePoblacion(c.getpob());
 
 

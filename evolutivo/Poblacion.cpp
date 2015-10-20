@@ -26,7 +26,7 @@ std::vector<Individuo> Poblacion::getpob(){
 
 void Poblacion::setpob(vector<Individuo>poblacion){
     int i;
-    for(i=0;i<POBLACION;i++){
+    for(i=0;i<poblacion.size();i++){
         //pob[i]=poblacion[i];
     	Individuo ind;
     	ind.setgenotipo(poblacion[i].getgenotipo());
@@ -36,7 +36,7 @@ void Poblacion::setpob(vector<Individuo>poblacion){
 
 }
 
-std::vector<Individuo> Poblacion::crearPoblacion(){
+std::vector<Individuo> Poblacion::crearPoblacion(int tam){
 
     Poblacion a;
     Individuo ind;
@@ -44,7 +44,7 @@ std::vector<Individuo> Poblacion::crearPoblacion(){
     double x,y;
 
 
-    for(int i=0;i<POBLACION;i++){
+    for(int i=0;i<tam;i++){
 
         ind.setgenotipo(ind.crearIndividuo(ind.genotipo));
         ind.decoder(&x,&y,ind.genotipo);

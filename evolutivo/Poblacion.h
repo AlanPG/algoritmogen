@@ -14,7 +14,6 @@
 #include <stdio.h>
 
 #define LONG_COD 20
-#define POBLACION 10
 
 using namespace std;
 
@@ -31,7 +30,7 @@ public:
     void setpob(std::vector<Individuo>);
     std::vector<Individuo> getpob();
 
-    std::vector<Individuo> crearPoblacion();
+    std::vector<Individuo> crearPoblacion(int tam);
     void imprimePoblacion(std::vector<Individuo>);
 
 };
