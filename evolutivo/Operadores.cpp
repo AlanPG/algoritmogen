@@ -30,21 +30,30 @@ vector<Individuo>Operadores::seleccion(vector<Individuo>pob){
 		    return select.pob;
 	}
 
-void Operadores::mutacion(vector<Individuo>hijos){
-
+vector<Individuo>Operadores::mutacion(vector<Individuo>hijos){
+	Poblacion p;
+	Individuo h;
+	int genotipo[LONG_COD];
+	double x,y;
 	int i, j;
 	    for(i=0; i<2; i++){
 	        for(j=0; j<LONG_COD; j++){
 
 	            if ((double) rand()/(RAND_MAX+1.0) < P_MUTACION)
 	            {
-	                if(hijos[j].genotipo[j])
-	                    hijos[i].genotipo[j] = 0;
-	                else hijos[i].genotipo[j] = 1;
+	            	for(int i=0;i<LONG_COD;i++)
+	            		genotipo[i] = hijos[i].getgenotipo()[i];
+	                if(genotipo[j])
+	                    genotipo[j] = 0;
+	                else genotipo[j] = 1;
 	            }
-
 	        }
+	        h.setgenotipo(genotipo);
+	        h.decoder(&x,&y,h.getgenotipo());
+	        h.setaptitud(h.fitness(x,y));
+	        p.pob.push_back(h);
 	    }
+	    return p.getpob();
 }
 
 void Operadores::cruza(vector<Individuo>seleccion){

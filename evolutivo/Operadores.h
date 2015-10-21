@@ -7,7 +7,7 @@
 
 
 #define POBLACION 10
-#define P_MUTACION 0.001
+#define P_MUTACION 0.01
 #define P_CRUZA 0.3
 
 #include <iostream>
@@ -24,7 +24,7 @@ public:
 
 	vector<Individuo>seleccion(vector<Individuo>);
 
-	void mutacion(vector<Individuo>);
+	vector<Individuo>mutacion(vector<Individuo>);
 
 	void cruza(vector<Individuo>);
 

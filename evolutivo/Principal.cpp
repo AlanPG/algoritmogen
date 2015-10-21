@@ -18,12 +18,16 @@ int main(){
     //printf("POBLACION:\n");
     //b.imprimePoblacion(b.getpob());
     printf("POBLACION SELECCIONADA:\n");
-    c.crearPoblacion(POBLACION/2);
+    c.crearPoblacion(6);
     c.setpob(op.seleccion(b.getpob()));
     c.imprimePoblacion(c.getpob());
     printf("POBLACION MUTADA:\n");
-    op.mutacion(c.getpob());
-    c.imprimePoblacion(c.getpob());
+    d.crearPoblacion(6);
+    d.setpob(op.mutacion(c.getpob()));
+    d.imprimePoblacion(d.getpob());
+    //printf("POBLACION CRUZADA:\n");
+    //op.cruza(c.getpob());
+    //c.imprimePoblacion(c.getpob());
 
 
     return 0;
