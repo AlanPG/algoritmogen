@@ -9,10 +9,13 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
+#include <ctime>
+
 
 #define LONG_COD 20
 #define LIMITE 5.12
 #define INTERVALO 10.24/pow(2,LONG_COD/2)
+
 
 using namespace std;
 

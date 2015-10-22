@@ -61,8 +61,9 @@ void Individuo::setgenotipo(int gen[]){
 
 
 int Individuo::generarBinario(void){
+	srand(time(NULL)%2);
+    return rand();
 
-        return rand()%2;
 }
 
 
