@@ -15,8 +15,8 @@ int main(){
     Operadores op;
 
     b.setpob(b.crearPoblacion(POBLACION));
-    //printf("POBLACION:\n");
-    //b.imprimePoblacion(b.getpob());
+    printf("POBLACION:\n");
+    b.imprimePoblacion(b.getpob());
     printf("POBLACION SELECCIONADA:\n");
     c.crearPoblacion(6);
     c.setpob(op.seleccion(b.getpob()));

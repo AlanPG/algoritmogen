@@ -26,7 +26,7 @@ public:
 
 	vector<Individuo>mutacion(vector<Individuo>);
 
-	void cruza(vector<Individuo>);
+	vector<Individuo>cruza(vector<Individuo>);
 
 	Individuo elite(vector<Individuo>);
 

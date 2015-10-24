@@ -1,4 +1,5 @@
 //operadores.cpp
+
 //Algoritmo genetico
 //Author: Héctor Rodríguez Gonźalez
 
@@ -33,22 +34,22 @@ vector<Individuo>Operadores::seleccion(vector<Individuo>pob){
 vector<Individuo>Operadores::mutacion(vector<Individuo>hijos){
 	Poblacion p;
 	Individuo h;
+	int *gen;
 	int genotipo[LONG_COD];
 	double x,y;
 	int i, j;
 	    for(i=0; i<2; i++){
+	    	gen = hijos[i].getgenotipo();
+	    	for(int j=0;j<LONG_COD;j++)
+	    		genotipo[j] = *(gen+j);
 	        for(j=0; j<LONG_COD; j++){
-
-	            if ((double) rand()/(RAND_MAX+1.0) < P_MUTACION)
-	            {
-	            	for(int i=0;i<LONG_COD;i++)
-	            		genotipo[i] = hijos[i].getgenotipo()[i];
-	                if(genotipo[j])
-	                    genotipo[j] = 0;
-	                else genotipo[j] = 1;
+	            if ((double) rand()/(RAND_MAX+1.0) < P_MUTACION){
+	                if(*(gen+j))
+	                    *(gen+j) = 0;
+	                else *(gen+j) = 1;
 	            }
 	        }
-	        h.setgenotipo(genotipo);
+	        h.setgenotipo(gen);
 	        h.decoder(&x,&y,h.getgenotipo());
 	        h.setaptitud(h.fitness(x,y));
 	        p.pob.push_back(h);
@@ -56,34 +57,59 @@ vector<Individuo>Operadores::mutacion(vector<Individuo>hijos){
 	    return p.getpob();
 }
 
-void Operadores::cruza(vector<Individuo>seleccion){
+vector<Individuo>Operadores::cruza(vector<Individuo>seleccion){
 	Individuo h;
-
-	int i, j, punto, aux;
+	Poblacion p;
+	int i, j, punto, aux,*gen1,*gen2;
 
 	    double x, y;
 
-	    for(i=0; i<POBLACION-1; i+=2)
+	    for(i=0; i<2*(seleccion.size()/2); i+=2)
 	    {
-	        if((double) rand()/(RAND_MAX+1.0) < P_CRUZA)
-	        {
-	            punto = (int) (((double) LONG_COD)*rand()/(RAND_MAX+1.0));
+	        //if((double) rand()/(RAND_MAX+1.0) < P_CRUZA){
+	        	gen1 = seleccion[i].getgenotipo();
+	        	gen2 = seleccion[i+1].getgenotipo();
+	            punto = 5;//(int) (((double) LONG_COD)*rand()/(RAND_MAX+1.0));
 
+	            printf("Gen 1 : ");
+	            for(int j=0;j<LONG_COD;j++)
+	            	printf("%d",gen1[i]);
+	            printf("\n");
+	            printf("Gen 2 : ");
+	            for(int j=0;j<LONG_COD;j++)
+	            	printf("%d",gen2[i]);
+	            printf("\n");
 	            for(j=punto; j<LONG_COD; j++)
 	            {
-	                aux=seleccion[i].genotipo[j];
-	                seleccion[i].genotipo[j]=seleccion[i+1].genotipo[j];
-	                seleccion[i+1].genotipo[j]=aux;
+	                //aux=seleccion[i].genotipo[j];
+	                //seleccion[i].genotipo[j]=seleccion[i+1].genotipo[j];
+	                //seleccion[i+1].genotipo[j]=aux;
+	            	aux=gen1[j];
+	            	gen1[j]=gen2[j];
+	            	gen2[j]=aux;
 	            }
+	            printf("Gen 1 : ");
+	            for(int j=0;j<LONG_COD;j++)
+	            	printf("%d",gen1[i]);
+	            printf("\n");
+	            printf("Gen 2 : ");
+	            for(int j=0;j<LONG_COD;j++)
+	            	printf("%d",gen2[i]);
+	            printf("\n");
+	            //mutacion(seleccion);
 
-	            mutacion(seleccion);
+	            h.setgenotipo(gen1);
+	            h.decoder(&x, &y, gen1);
+	            h.setaptitud(h.fitness(x,y));
+	            p.pob.push_back(h);
+	            h.setgenotipo(gen2);
+	            h.decoder(&x, &y, gen2);
+	            h.setaptitud(h.fitness(x,y));
+	            p.pob.push_back(h);
 
-	            h.decoder(&x, &y, seleccion[i].genotipo);
-	            seleccion[i].aptitud = h.fitness(x,y);
-	            h.decoder(&x, &y, seleccion[i+1].genotipo);
-	            seleccion[i+1].aptitud = h.fitness(x,y);
-	        }
+	        //}
 	    }
+	    return p.pob;
 }
 
 Individuo Operadores::elite(vector<Individuo>poblacion){
